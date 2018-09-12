@@ -78,6 +78,4 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repository: https://github.com/YukunWen/YukunWen.github.io.git
-  branch: master
+  type:
