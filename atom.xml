@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-13T06:48:26.771Z</updated>
+  <updated>2018-09-13T07:12:51.986Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2018/09/12/springboot%E4%B8%AD%E5%AE%89%E8%A3%85redis/"/>
     <id>http://yoursite.com/2018/09/12/springboot中安装redis/</id>
     <published>2018-09-12T09:37:37.000Z</published>
-    <updated>2018-09-13T06:48:26.771Z</updated>
+    <updated>2018-09-13T07:12:51.986Z</updated>
     
     <summary type="html">
     
@@ -32,8 +32,6 @@
     
       <category term="springboot" scheme="http://yoursite.com/tags/springboot/"/>
     
-      <category term="redis" scheme="http://yoursite.com/tags/redis/"/>
-    
   </entry>
   
   <entry>
@@ -41,7 +39,7 @@
     <link href="http://yoursite.com/2018/09/12/srpingboot%E4%B8%8Emybatis/"/>
     <id>http://yoursite.com/2018/09/12/srpingboot与mybatis/</id>
     <published>2018-09-12T09:37:37.000Z</published>
-    <updated>2018-09-13T06:48:37.362Z</updated>
+    <updated>2018-09-13T07:11:56.081Z</updated>
     
     <summary type="html">
     
@@ -51,6 +49,8 @@
     
     
       <category term="springboot" scheme="http://yoursite.com/tags/springboot/"/>
+    
+      <category term="redis" scheme="http://yoursite.com/tags/redis/"/>
     
   </entry>
   
