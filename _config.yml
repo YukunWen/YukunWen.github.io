@@ -81,3 +81,6 @@ deploy:
   type: git
   repository: https://github.com/YukunWen/YukunWen.github.io.git
   branch: master
+
+ #头像
+ avatar: /uploads/avatar.png
