@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://yukunwen.github.io/categories/index.html</loc>
+    <loc>https://yukunwen.github.io/tags/index.html</loc>
     
-    <lastmod>2018-09-13T14:47:49.678Z</lastmod>
+    <lastmod>2018-09-13T15:03:41.842Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://yukunwen.github.io/tags/index.html</loc>
+    <loc>https://yukunwen.github.io/categories/index.html</loc>
     
-    <lastmod>2018-09-13T14:43:56.578Z</lastmod>
+    <lastmod>2018-09-13T15:03:32.855Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yukunwen.github.io/2018/09/13/2222222222222/</loc>
+    
+    <lastmod>2018-09-13T15:02:53.158Z</lastmod>
     
   </url>
   

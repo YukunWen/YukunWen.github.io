@@ -1,89 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title>springboot中安装redis.md</title>
-      <link href="/2018/09/12/springboot%E4%B8%AD%E5%AE%89%E8%A3%85redis/"/>
-      <url>/2018/09/12/springboot%E4%B8%AD%E5%AE%89%E8%A3%85redis/</url>
-      <content type="html"><![CDATA[]]></content>
-      
+<search>
+  <entry>
+    <title><![CDATA[springboot中安装redis.md]]></title>
+    <url>%2F2018%2F09%2F13%2F2222222222222%2F</url>
+    <content type="text"></content>
       <categories>
-          
-          <category> java </category>
-          
+        <category>test123</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> springboot </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>srpingboot与mybatis.md</title>
-      <link href="/2018/09/12/srpingboot%E4%B8%8Emybatis/"/>
-      <url>/2018/09/12/srpingboot%E4%B8%8Emybatis/</url>
-      <content type="html"><![CDATA[]]></content>
-      
+  </entry>
+  <entry>
+    <title><![CDATA[springboot中安装redis.md]]></title>
+    <url>%2F2018%2F09%2F12%2Fspringboot%E4%B8%AD%E5%AE%89%E8%A3%85redis%2F</url>
+    <content type="text"></content>
       <categories>
-          
-          <category> mybatis </category>
-          
+        <category>java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> springboot </tag>
-            
-            <tag> redis </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2018/09/12/hello-world/"/>
-      <url>/2018/09/12/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
+      <tags>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[srpingboot与mybatis.md]]></title>
+    <url>%2F2018%2F09%2F12%2Fsrpingboot%E4%B8%8Emybatis%2F</url>
+    <content type="text"></content>
       <categories>
-          
-          <category> java </category>
-          
+        <category>mybatis</category>
       </categories>
-      
-      
-    </entry>
-    
-  
-  
-    
-    <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      <content type="html"><![CDATA[]]></content>
-    </entry>
-    
-    <entry>
-      <title>java</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      <content type="html"><![CDATA[<hr><p>title: mybatis<br>date: 2018-09-13 14:08:26</p><h2 id="type-“categories”"><a href="#type-“categories”" class="headerlink" title="type: “categories”"></a>type: “categories”</h2>]]></content>
-    </entry>
-    
-    <entry>
-      <title>redis</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      <content type="html"><![CDATA[<hr><p>title: springboot<br>date: 2018-09-13 14:17:38</p><h2 id="type-“tags”"><a href="#type-“tags”" class="headerlink" title="type: “tags”"></a>type: “tags”</h2>]]></content>
-    </entry>
-    
-  
+      <tags>
+        <tag>springboot</tag>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F09%2F12%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post$ hexo new "My New Post" More info: Writing Run server$ hexo server More info: Server Generate static files$ hexo generate More info: Generating Deploy to remote sites$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[about]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[categories]]></title>
+    <url>%2Fcategories%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
 </search>
