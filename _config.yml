@@ -39,7 +39,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace:
@@ -76,6 +76,12 @@ pagination_dir: page
 theme: next
 
 baidu_analytics: b8582eb8a838e462ebcf32bc62233dc9
+
+prism_plugin:
+  mode: 'preprocess'
+  theme: 'default'
+  line_number: false 
+  
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
