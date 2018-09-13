@@ -32,16 +32,6 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[java]]></title>
-    <url>%2Fcategories%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[mybatis]]></title>
-    <url>%2Fcategories%2Fmybatis.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[redis]]></title>
     <url>%2Ftags%2Findex.html</url>
     <content type="text"><![CDATA[title: springbootdate: 2018-09-13 14:17:38 type: “tags”]]></content>
@@ -50,5 +40,15 @@
     <title><![CDATA[about]]></title>
     <url>%2Fabout%2Findex.html</url>
     <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[mybatis]]></title>
+    <url>%2Fcategories%2Fmybatis.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[java]]></title>
+    <url>%2Fcategories%2Findex.html</url>
+    <content type="text"><![CDATA[title: mybatisdate: 2018-09-13 14:08:26 type: “categories”]]></content>
   </entry>
 </search>
