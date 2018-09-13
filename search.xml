@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[springboot中安装redis.md]]></title>
-    <url>%2F2018%2F09%2F12%2Fspringboot%E4%B8%AD%E5%AE%89%E8%A3%85redis%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>springboot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[srpingboot与mybatis.md]]></title>
     <url>%2F2018%2F09%2F12%2Fsrpingboot%E4%B8%8Emybatis%2F</url>
     <content type="text"></content>
@@ -21,6 +10,17 @@
       <tags>
         <tag>springboot</tag>
         <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[springboot中安装redis.md]]></title>
+    <url>%2F2018%2F09%2F12%2Fspringboot%E4%B8%AD%E5%AE%89%E8%A3%85redis%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>springboot</tag>
       </tags>
   </entry>
   <entry>
