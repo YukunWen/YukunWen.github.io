@@ -89,4 +89,9 @@ deploy:
   type: git
   repository: https://github.com/YukunWen/YukunWen.github.io.git
   branch: master
- 
+  
+  
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
