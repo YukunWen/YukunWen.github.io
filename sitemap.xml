@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yukunwen.github.io/tags/index.html</loc>
+    
+    <lastmod>2018-09-13T14:43:56.578Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yukunwen.github.io/2018/09/12/springboot%E4%B8%AD%E5%AE%89%E8%A3%85redis/</loc>
     
     <lastmod>2018-09-13T07:12:51.986Z</lastmod>
@@ -16,20 +23,6 @@
   </url>
   
   <url>
-    <loc>https://yukunwen.github.io/tags/index.html</loc>
-    
-    <lastmod>2018-09-13T06:45:01.359Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yukunwen.github.io/tags/index1.html</loc>
-    
-    <lastmod>2018-09-13T06:44:44.575Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://yukunwen.github.io/2018/09/12/hello-world/</loc>
     
     <lastmod>2018-09-13T06:43:57.904Z</lastmod>
@@ -37,7 +30,7 @@
   </url>
   
   <url>
-    <loc>https://yukunwen.github.io/categories/java.html</loc>
+    <loc>https://yukunwen.github.io/categories/index.html</loc>
     
     <lastmod>2018-09-13T06:42:05.568Z</lastmod>
     
