@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yukunwen.github.io/2018/10/14/linux%E4%B8%8A%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</loc>
+    
+    <lastmod>2018-10-14T03:29:11.790Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yukunwen.github.io/tags/index.html</loc>
     
     <lastmod>2018-09-13T15:03:41.842Z</lastmod>
@@ -12,34 +19,6 @@
     <loc>https://yukunwen.github.io/categories/index.html</loc>
     
     <lastmod>2018-09-13T15:03:32.855Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yukunwen.github.io/2018/09/13/2222222222222/</loc>
-    
-    <lastmod>2018-09-13T15:02:53.158Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yukunwen.github.io/2018/09/12/springboot%E4%B8%AD%E5%AE%89%E8%A3%85redis/</loc>
-    
-    <lastmod>2018-09-13T07:12:51.986Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yukunwen.github.io/2018/09/12/srpingboot%E4%B8%8Emybatis/</loc>
-    
-    <lastmod>2018-09-13T07:11:56.081Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yukunwen.github.io/2018/09/12/hello-world/</loc>
-    
-    <lastmod>2018-09-13T06:43:57.904Z</lastmod>
     
   </url>
   

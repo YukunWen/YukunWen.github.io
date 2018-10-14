@@ -3,84 +3,26 @@
 
 
     
-    
-    
   <url>
-    <loc>https://yukunwen.github.io/2018/09/13/2222222222222/</loc>
-    <lastmod>2018-09-13T15:02:53.158Z</lastmod>
+    <loc>https://yukunwen.github.io/2018/10/14/linux%E4%B8%8A%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</loc>
+    <lastmod>2018-10-14T03:29:11.790Z</lastmod>
     <data>
         <display>
-        <title>springboot中安装redis.md</title>
-        <pubTime>2018-09-13T09:37:37.000Z</pubTime>
+        <title>"linux上发送邮件"</title>
+        <pubTime>2018-10-14T03:26:37.000Z</pubTime>
         
+        <tag>linux</tag>
+         
          
            
              
-              <breadCrumb title="test123" url="http://yoursite.com/categories/test123/"/>
+              <breadCrumb title="linux" url="http://yoursite.com/categories/linux/"/>
           
         </display>
     </data>
     </url>
 
     
-  <url>
-    <loc>https://yukunwen.github.io/2018/09/12/springboot%E4%B8%AD%E5%AE%89%E8%A3%85redis/</loc>
-    <lastmod>2018-09-13T07:12:51.986Z</lastmod>
-    <data>
-        <display>
-        <title>springboot中安装redis.md</title>
-        <pubTime>2018-09-12T09:37:37.000Z</pubTime>
-        
-        <tag>springboot</tag>
-         
-         
-           
-             
-              <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
-  <url>
-    <loc>https://yukunwen.github.io/2018/09/12/srpingboot%E4%B8%8Emybatis/</loc>
-    <lastmod>2018-09-13T07:11:56.081Z</lastmod>
-    <data>
-        <display>
-        <title>srpingboot与mybatis.md</title>
-        <pubTime>2018-09-12T09:37:37.000Z</pubTime>
-        
-        <tag>springboot</tag>
-         
-        <tag>redis</tag>
-         
-         
-           
-             
-              <breadCrumb title="mybatis" url="http://yoursite.com/categories/mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://yukunwen.github.io/2018/09/12/hello-world/</loc>
-    <lastmod>2018-09-13T06:43:57.904Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2018-09-12T09:05:24.628Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
 </urlset>
