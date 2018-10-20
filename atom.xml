@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-14T03:29:11.790Z</updated>
+  <updated>2018-10-20T02:24:51.507Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>&quot;爬虫抓取重定向问题&quot;</title>
+    <link href="http://yoursite.com/2018/10/20/%E7%88%AC%E8%99%AB%E6%8A%93%E5%8F%96%E9%87%8D%E5%AE%9A%E5%90%91%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2018/10/20/爬虫抓取重定向问题/</id>
+    <published>2018-10-20T02:24:29.000Z</published>
+    <updated>2018-10-20T02:24:51.507Z</updated>
+    
+    <content type="html"><![CDATA[<p>在做爬虫中，我们经常会遇到<strong>重定向</strong>问题。比如之前做的秒拍的地址：</p><p><a href="http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm" target="_blank" rel="noopener">http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm</a></p><p>在重定向后就成为了：</p><p><a href="http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z" target="_blank" rel="noopener">http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z</a></p><p>从浏览器的network也可以看出来发生了一个重定向</p><p><img src="http://upload-images.jianshu.io/upload_images/14043408-71520da4af6e9d52?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图1"></p><h4 id="所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。"><a href="#所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。" class="headerlink" title="所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。"></a>所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。</h4><p>那么，就需要我们在该地址之前做一层<strong>302重定向</strong>到新的地址，根据新的地址就可以进行原有的解析工作。</p><ol><li>网上查到有一种简单的方法：  </li></ol><pre class=" language-java"><code class="language-java">        String url <span class="token operator">=</span> <span class="token string">"http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm"</span><span class="token punctuation">;</span>        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"访问地址:"</span> <span class="token operator">+</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>        URL serverUrl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>        HttpURLConnection conn <span class="token operator">=</span> <span class="token punctuation">(</span>HttpURLConnection<span class="token punctuation">)</span> serverUrl<span class="token punctuation">.</span><span class="token function">openConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        conn<span class="token punctuation">.</span><span class="token function">setRequestMethod</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        conn<span class="token punctuation">.</span><span class="token function">setRequestProperty</span><span class="token punctuation">(</span><span class="token string">"accept"</span><span class="token punctuation">,</span> <span class="token string">"*/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        conn<span class="token punctuation">.</span><span class="token function">setRequestProperty</span><span class="token punctuation">(</span><span class="token string">"connection"</span><span class="token punctuation">,</span> <span class="token string">"Keep-Alive"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 必须设置false，否则会自动redirect到Location的地址</span>        conn<span class="token punctuation">.</span><span class="token function">setInstanceFollowRedirects</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//获取Location地址</span>        String location <span class="token operator">=</span> conn<span class="token punctuation">.</span><span class="token function">getHeaderField</span><span class="token punctuation">(</span><span class="token string">"Location"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>location<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>该方法在本地进行模拟还可以，但是不适用于在生产上。<br>实际生产中爬虫都是高频次的爬取，所以任何的访问都必须带上代理才行。<br>结合公司目前采用的是httpClient框架，于是给出如下demo代码：</p><ol start="2"><li><p>含有代理的httpClient实现<br><code>`</code> java<br>public static List<uri> doGetRedirectLocations(HttpGet httpReq){</uri></p><pre><code> setHeaders(httpReq); httpReq.setConfig(instance.reqConfig); HttpClientContext localContext = getProxyContext(); try (CloseableHttpResponse httpResp = instance.httpClient.execute(httpReq, localContext)){     return localContext.getRedirectLocations(); } catch (Exception e) {     throw new RuntimeException(e); }</code></pre><p> }</p></li></ol><p>public static HttpClientContext getProxyContext() {<br>        AuthCache authCache = new BasicAuthCache();<br>        authCache.put(instance.proxy, new BasicScheme());</p><pre><code>    HttpClientContext localContext = HttpClientContext.create();    localContext.setAuthCache(authCache);    return localContext;}</code></pre><pre><code>更进一步地，由于大型网站都会有防爬虫的机制，即便你采用了动态IP的代理，但是还是难免在抓取的过程中可能会弹出需要输入验证码，或者进行滑块滑动验证的时候。于是，更进一步的代码如下：3. 增加轮询的视频抓取```java    public static List&lt;URI&gt; doGetRedirectLocations(HttpGet httpReq, int retry) {        if (retry == 0) {            log.error(&quot;重试次数已经用完&quot; + httpReq);            return null;        }        HttpClientContext localContext = getProxyContext();        try (CloseableHttpResponse httpResp = instance.httpClient.execute(httpReq, localContext)) {            List&lt;URI&gt; redirectLocations = localContext.getRedirectLocations();            if (redirectLocations != null &amp;&amp; redirectLocations.size() &gt; 0) {                return redirectLocations;            } else {                Thread.sleep(1000);                return doGetRedirectLocations(httpReq, retry - 1);            }        } catch (Exception e) {            throw new RuntimeException(e);        }    }</code></pre><p>PS: 轮询有多重实现方式，初级工程师基本会使用for循环，那样的代码有时候冗余，可读性差。轮询最好用递归的方式，显得优雅。</p><p>至此，关于视频重定向的问题就这么解决了。最后顺口提及一句，在做爬虫解析过程中，我们发现了很多时候URL的尾部是非常不重要的。比如，本文章中的秒拍地址：</p><p><a href="http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm" target="_blank" rel="noopener">http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm</a></p><p>你就算是写成</p><p><a href="http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.html" target="_blank" rel="noopener">http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.html</a></p><p>或者</p><p><a href="http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__" target="_blank" rel="noopener">http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__</a></p><p>一样可以无差别访问，因此在做正则匹配的时候，切记考虑通配尾部。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在做爬虫中，我们经常会遇到&lt;strong&gt;重定向&lt;/strong&gt;问题。比如之前做的秒拍的地址：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>&quot;linux上发送邮件&quot;</title>
