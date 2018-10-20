@@ -27,7 +27,7 @@ set smtp-auth-password=xxx
 //smtp-auth：SMTP的认证方式，默认是login，也可以改成CRAM-MD5或PLAIN方式  
 set smtp-auth=login
 ```
-
+<!--more-->
 ####3. 测试  
 >mail -s "hello word" xxxx@qq.com < /etc/passwd  
 echo "测试邮件" | mail -s "测试" xx@qq.com
