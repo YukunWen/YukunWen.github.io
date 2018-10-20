@@ -90,7 +90,7 @@
 <meta property="og:description" content="在做爬虫中，我们经常会遇到重定向问题。比如之前做的秒拍的地址：  http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm  在重定向后就成为了：  http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z  从浏览器的network也可以看出来发生">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14043408-71520da4af6e9d52?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-10-20T02:47:02.776Z">
+<meta property="og:updated_time" content="2018-10-20T02:58:49.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&quot;爬虫抓取重定向问题&quot;">
 <meta name="twitter:description" content="在做爬虫中，我们经常会遇到重定向问题。比如之前做的秒拍的地址：  http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm  在重定向后就成为了：  http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z  从浏览器的network也可以看出来发生">
@@ -430,49 +430,56 @@
         String location <span class="token operator">=</span> conn<span class="token punctuation">.</span><span class="token function">getHeaderField</span><span class="token punctuation">(</span><span class="token string">"Location"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>location<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>该方法在本地进行模拟还可以，但是不适用于在生产上。<br>实际生产中爬虫都是高频次的爬取，所以任何的访问都必须带上代理才行。<br>结合公司目前采用的是httpClient框架，于是给出如下demo代码：  </p>
+<p>该方法在本地进行模拟还可以，但是不适用于在生产上。<br>实际生产中爬虫都是高频次的爬取，所以任何的访问都必须带上代理才行。<br>结合公司目前采用的是httpClient框架，于是给出如下demo代码。 </p>
 <ol start="2">
-<li><p>含有代理的httpClient实现<br><code>`</code> java<br>public static List<uri> doGetRedirectLocations(HttpGet httpReq){</uri></p>
-<pre><code> setHeaders(httpReq);
- httpReq.setConfig(instance.reqConfig);
- HttpClientContext localContext = getProxyContext();
-
- try (CloseableHttpResponse httpResp = instance.httpClient.execute(httpReq, localContext)){
-     return localContext.getRedirectLocations();
- } catch (Exception e) {
-     throw new RuntimeException(e);
- }
-</code></pre><p> }</p>
-</li>
+<li>含有代理的httpClient实现：</li>
 </ol>
-<p>public static HttpClientContext getProxyContext() {<br>        AuthCache authCache = new BasicAuthCache();<br>        authCache.put(instance.proxy, new BasicScheme());</p>
-<pre><code>    HttpClientContext localContext = HttpClientContext.create();
-    localContext.setAuthCache(authCache);
-    return localContext;
-}
-</code></pre><pre><code>更进一步地，由于大型网站都会有防爬虫的机制，即便你采用了动态IP的代理，但是还是难免在抓取的过程中可能会弹出需要输入验证码，或者进行滑块滑动验证的时候。
-于是，更进一步的代码如下：
-3. 增加轮询的视频抓取
-``` java 
-   public static List&lt;URI&gt; doGetRedirectLocations(HttpGet httpReq, int retry) {
-        if (retry == 0) {
-            log.error(&quot;重试次数已经用完&quot; + httpReq);
-            return null;
-        }
-        HttpClientContext localContext = getProxyContext();
-        try (CloseableHttpResponse httpResp = instance.httpClient.execute(httpReq, localContext)) {
-            List&lt;URI&gt; redirectLocations = localContext.getRedirectLocations();
-            if (redirectLocations != null &amp;&amp; redirectLocations.size() &gt; 0) {
-                return redirectLocations;
-            } else {
-                Thread.sleep(1000);
-                return doGetRedirectLocations(httpReq, retry - 1);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-</code></pre><p>PS: 轮询有多重实现方式，初级工程师基本会使用for循环，那样的代码有时候冗余，可读性差。轮询最好用递归的方式，显得优雅。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> List<span class="token operator">&lt;</span>URI<span class="token operator">></span> <span class="token function">doGetRedirectLocations</span><span class="token punctuation">(</span>HttpGet httpReq<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">setHeaders</span><span class="token punctuation">(</span>httpReq<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        httpReq<span class="token punctuation">.</span><span class="token function">setConfig</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>reqConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        HttpClientContext localContext <span class="token operator">=</span> <span class="token function">getProxyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">try</span> <span class="token punctuation">(</span>CloseableHttpResponse httpResp <span class="token operator">=</span> instance<span class="token punctuation">.</span>httpClient<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>httpReq<span class="token punctuation">,</span> localContext<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> localContext<span class="token punctuation">.</span><span class="token function">getRedirectLocations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> HttpClientContext <span class="token function">getProxyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AuthCache authCache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BasicAuthCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        authCache<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>proxy<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">BasicScheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        HttpClientContext localContext <span class="token operator">=</span> HttpClientContext<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        localContext<span class="token punctuation">.</span><span class="token function">setAuthCache</span><span class="token punctuation">(</span>authCache<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> localContext<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>更进一步地，由于大型网站都会有防爬虫的机制，即便你采用了动态IP的代理，但是还是难免在抓取的过程中可能会弹出需要输入验证码，或者进行滑块滑动验证的时候。<br>于是，更进一步的代码如下。</p>
+<ol start="3">
+<li>增加轮询的视频抓取：</li>
+</ol>
+<pre class=" language-java"><code class="language-java">   <span class="token keyword">public</span> <span class="token keyword">static</span> List<span class="token operator">&lt;</span>URI<span class="token operator">></span> <span class="token function">doGetRedirectLocations</span><span class="token punctuation">(</span>HttpGet httpReq<span class="token punctuation">,</span> <span class="token keyword">int</span> retry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>retry <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"重试次数已经用完"</span> <span class="token operator">+</span> httpReq<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        HttpClientContext localContext <span class="token operator">=</span> <span class="token function">getProxyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">(</span>CloseableHttpResponse httpResp <span class="token operator">=</span> instance<span class="token punctuation">.</span>httpClient<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>httpReq<span class="token punctuation">,</span> localContext<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            List<span class="token operator">&lt;</span>URI<span class="token operator">></span> redirectLocations <span class="token operator">=</span> localContext<span class="token punctuation">.</span><span class="token function">getRedirectLocations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>redirectLocations <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> redirectLocations<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> redirectLocations<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token function">doGetRedirectLocations</span><span class="token punctuation">(</span>httpReq<span class="token punctuation">,</span> retry <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>PS: 轮询有多重实现方式，初级工程师基本会使用for循环，那样的代码有时候冗余，可读性差。轮询最好用递归的方式，显得优雅。</p>
 <p>至此，关于视频重定向的问题就这么解决了。最后顺口提及一句，在做爬虫解析过程中，我们发现了很多时候URL的尾部是非常不重要的。比如，本文章中的秒拍地址：</p>
 <blockquote>
 <p><a href="http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm" target="_blank" rel="noopener">http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm</a></p>

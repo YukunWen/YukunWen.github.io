@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://yukunwen.github.io/2018/10/20/%E7%88%AC%E8%99%AB%E6%8A%93%E5%8F%96%E9%87%8D%E5%AE%9A%E5%90%91%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2018-10-20T02:58:49.221Z</lastmod>
+    <data>
+        <display>
+        <title>"爬虫抓取重定向问题"</title>
+        <pubTime>2018-10-20T02:24:29.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://yukunwen.github.io/2018/10/14/linux%E4%B8%8A%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</loc>
     <lastmod>2018-10-20T02:51:43.283Z</lastmod>
     <data>
@@ -17,26 +37,6 @@
            
              
               <breadCrumb title="linux" url="http://yoursite.com/categories/linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://yukunwen.github.io/2018/10/20/%E7%88%AC%E8%99%AB%E6%8A%93%E5%8F%96%E9%87%8D%E5%AE%9A%E5%90%91%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2018-10-20T02:47:02.776Z</lastmod>
-    <data>
-        <display>
-        <title>"爬虫抓取重定向问题"</title>
-        <pubTime>2018-10-20T02:24:29.000Z</pubTime>
-        
-        <tag>java</tag>
-         
-         
-           
-             
-              <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
           
         </display>
     </data>
