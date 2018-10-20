@@ -90,7 +90,7 @@
 <meta property="og:description" content="在做爬虫中，我们经常会遇到重定向问题。比如之前做的秒拍的地址： http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm 在重定向后就成为了： http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z 从浏览器的network也可以看出来发生了一个重">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14043408-71520da4af6e9d52?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-10-20T02:24:51.507Z">
+<meta property="og:updated_time" content="2018-10-20T02:39:02.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&quot;爬虫抓取重定向问题&quot;">
 <meta name="twitter:description" content="在做爬虫中，我们经常会遇到重定向问题。比如之前做的秒拍的地址： http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm 在重定向后就成为了： http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z 从浏览器的network也可以看出来发生了一个重">
@@ -407,7 +407,8 @@
 <p><a href="http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z" target="_blank" rel="noopener">http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z</a></p>
 <p>从浏览器的network也可以看出来发生了一个重定向</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/14043408-71520da4af6e9d52?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图1"></p>
-<h4 id="所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。"><a href="#所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。" class="headerlink" title="所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。"></a>所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。</h4><p>那么，就需要我们在该地址之前做一层<strong>302重定向</strong>到新的地址，根据新的地址就可以进行原有的解析工作。</p>
+<h4 id="所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。"><a href="#所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。" class="headerlink" title="所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。"></a>所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。</h4><a id="more"></a>
+<p>那么，就需要我们在该地址之前做一层<strong>302重定向</strong>到新的地址，根据新的地址就可以进行原有的解析工作。</p>
 <ol>
 <li>网上查到有一种简单的方法：  </li>
 </ol>
@@ -448,7 +449,7 @@
 </code></pre><pre><code>更进一步地，由于大型网站都会有防爬虫的机制，即便你采用了动态IP的代理，但是还是难免在抓取的过程中可能会弹出需要输入验证码，或者进行滑块滑动验证的时候。
 于是，更进一步的代码如下：
 3. 增加轮询的视频抓取
-```java 
+``` java 
    public static List&lt;URI&gt; doGetRedirectLocations(HttpGet httpReq, int retry) {
         if (retry == 0) {
             log.error(&quot;重试次数已经用完&quot; + httpReq);
