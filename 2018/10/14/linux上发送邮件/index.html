@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Hey, you find me!">
 <meta property="og:description" content="####1.  首先需要安装mailx  yum install mailx  ####2.  编辑配置文件  vim /etc/mail.rc  添加如下内容   //from：对方收到邮件时显示的发件人   set from=xxxx@qq.com   //smtp：指定第三方发邮件的smtp服务器地址   set smtp=smtp.qq.com   //smtp-auth-user：第三方">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-14T03:29:11.790Z">
+<meta property="og:updated_time" content="2018-10-20T02:51:43.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&quot;linux上发送邮件&quot;">
 <meta name="twitter:description" content="####1.  首先需要安装mailx  yum install mailx  ####2.  编辑配置文件  vim /etc/mail.rc  添加如下内容   //from：对方收到邮件时显示的发件人   set from=xxxx@qq.com   //smtp：指定第三方发邮件的smtp服务器地址   set smtp=smtp.qq.com   //smtp-auth-user：第三方">
@@ -418,7 +418,8 @@ set smtp-auth-user=xx@qq.com
 set smtp-auth-password=xxx  
 //smtp-auth：SMTP的认证方式，默认是login，也可以改成CRAM-MD5或PLAIN方式  
 set smtp-auth=login
-</code></pre><p>####3. 测试  </p>
+</code></pre><a id="more"></a>
+<p>####3. 测试  </p>
 <blockquote>
 <p>mail -s “hello word” <a href="mailto:xxxx@qq.com" target="_blank" rel="noopener">xxxx@qq.com</a> &lt; /etc/passwd<br>echo “测试邮件” | mail -s “测试” <a href="mailto:xx@qq.com" target="_blank" rel="noopener">xx@qq.com</a></p>
 </blockquote>
