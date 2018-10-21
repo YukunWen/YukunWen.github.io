@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java," />
+  <meta name="keywords" content="springboot," />
 
 
 
@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="在做爬虫中，我们经常会遇到重定向问题。比如之前做的秒拍的地址：  http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm  在重定向后就成为了：  http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z  从浏览器的network也可以看出来发生">
-<meta name="keywords" content="java">
+<meta name="description" content="引言springboot项目默认启动的是application.properties文件。在实际的开发中，一个项目中会含有多个模块，每个模块下面可能都含有一个或多个默认的配置信息。另外，有的工程中可能会需要引入额外的自定义配置文件。由此，引出三个问题： 1. 自定义配置文件如何书写？2. 默认的配置文件启动的顺序与读取？3. 自定义配置文件与默认配置文件发生冲突的时候谁的优先级更高？ 下面我们将仔">
+<meta name="keywords" content="springboot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="&quot;爬虫抓取重定向问题&quot;">
-<meta property="og:url" content="http://yoursite.com/2018/10/20/爬虫抓取重定向问题/index.html">
+<meta property="og:title" content="&quot;自定义配置文件properties与Spring boot源码启动配置文件分析（一）&quot;">
+<meta property="og:url" content="http://yoursite.com/2018/10/20/自定义配置文件properties与Spring boot源码启动配置文件分析（一）/index.html">
 <meta property="og:site_name" content="Hey, you find me!">
-<meta property="og:description" content="在做爬虫中，我们经常会遇到重定向问题。比如之前做的秒拍的地址：  http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm  在重定向后就成为了：  http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z  从浏览器的network也可以看出来发生">
+<meta property="og:description" content="引言springboot项目默认启动的是application.properties文件。在实际的开发中，一个项目中会含有多个模块，每个模块下面可能都含有一个或多个默认的配置信息。另外，有的工程中可能会需要引入额外的自定义配置文件。由此，引出三个问题： 1. 自定义配置文件如何书写？2. 默认的配置文件启动的顺序与读取？3. 自定义配置文件与默认配置文件发生冲突的时候谁的优先级更高？ 下面我们将仔">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14043408-71520da4af6e9d52?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-10-20T02:58:49.221Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14043408-13d2835e1a38846d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-21T14:55:02.053Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="&quot;爬虫抓取重定向问题&quot;">
-<meta name="twitter:description" content="在做爬虫中，我们经常会遇到重定向问题。比如之前做的秒拍的地址：  http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm  在重定向后就成为了：  http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z  从浏览器的network也可以看出来发生">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/14043408-71520da4af6e9d52?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="&quot;自定义配置文件properties与Spring boot源码启动配置文件分析（一）&quot;">
+<meta name="twitter:description" content="引言springboot项目默认启动的是application.properties文件。在实际的开发中，一个项目中会含有多个模块，每个模块下面可能都含有一个或多个默认的配置信息。另外，有的工程中可能会需要引入额外的自定义配置文件。由此，引出三个问题： 1. 自定义配置文件如何书写？2. 默认的配置文件启动的顺序与读取？3. 自定义配置文件与默认配置文件发生冲突的时候谁的优先级更高？ 下面我们将仔">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14043408-13d2835e1a38846d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/20/爬虫抓取重定向问题/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/20/自定义配置文件properties与Spring boot源码启动配置文件分析（一）/"/>
 
 
 
 
 
-  <title>"爬虫抓取重定向问题" | Hey, you find me!</title>
+  <title>"自定义配置文件properties与Spring boot源码启动配置文件分析（一）" | Hey, you find me!</title>
   
 
 
@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/爬虫抓取重定向问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/自定义配置文件properties与Spring boot源码启动配置文件分析（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yukun Wen">
@@ -318,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">"爬虫抓取重定向问题"</h1>
+          <h1 class="post-title" itemprop="name headline">"自定义配置文件properties与Spring boot源码启动配置文件分析（一）"</h1>
         
 
         <div class="post-meta">
@@ -330,7 +330,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T10:24:29+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T21:57:29+08:00">
                 2018-10-20
               </time>
             
@@ -370,7 +370,7 @@
 
           
           
-             <span id="/2018/10/20/爬虫抓取重定向问题/" class="leancloud_visitors" data-flag-title=""爬虫抓取重定向问题"">
+             <span id="/2018/10/20/自定义配置文件properties与Spring boot源码启动配置文件分析（一）/" class="leancloud_visitors" data-flag-title=""自定义配置文件properties与Spring boot源码启动配置文件分析（一）"">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -401,98 +401,86 @@
       
 
       
-        <p>在做爬虫中，我们经常会遇到<strong>重定向</strong>问题。比如之前做的秒拍的地址：</p>
-<blockquote>
-<p><a href="http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm" target="_blank" rel="noopener">http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm</a></p>
-</blockquote>
-<p>在重定向后就成为了：</p>
-<blockquote>
-<p><a href="http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z" target="_blank" rel="noopener">http://n.miaopai.com/media/fnrDABcheGpX2nrnpts7J9KC5ZlnVZ~Z</a></p>
-</blockquote>
-<p>从浏览器的network也可以看出来发生了一个重定向</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/14043408-71520da4af6e9d52?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图1"></p>
-<h4 id="所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。"><a href="#所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。" class="headerlink" title="所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。"></a>所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。</h4><a id="more"></a>
-<p>那么，就需要我们在该地址之前做一层<strong>302重定向</strong>到新的地址，根据新的地址就可以进行原有的解析工作。</p>
-<ol>
-<li>网上查到有一种简单的方法：  </li>
-</ol>
-<pre class=" language-java"><code class="language-java">
-        String url <span class="token operator">=</span> <span class="token string">"http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm"</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"访问地址:"</span> <span class="token operator">+</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        URL serverUrl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        HttpURLConnection conn <span class="token operator">=</span> <span class="token punctuation">(</span>HttpURLConnection<span class="token punctuation">)</span> serverUrl<span class="token punctuation">.</span><span class="token function">openConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        conn<span class="token punctuation">.</span><span class="token function">setRequestMethod</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        conn<span class="token punctuation">.</span><span class="token function">setRequestProperty</span><span class="token punctuation">(</span><span class="token string">"accept"</span><span class="token punctuation">,</span> <span class="token string">"*/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        conn<span class="token punctuation">.</span><span class="token function">setRequestProperty</span><span class="token punctuation">(</span><span class="token string">"connection"</span><span class="token punctuation">,</span> <span class="token string">"Keep-Alive"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// 必须设置false，否则会自动redirect到Location的地址</span>
-        conn<span class="token punctuation">.</span><span class="token function">setInstanceFollowRedirects</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//获取Location地址</span>
-        String location <span class="token operator">=</span> conn<span class="token punctuation">.</span><span class="token function">getHeaderField</span><span class="token punctuation">(</span><span class="token string">"Location"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>location<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>该方法在本地进行模拟还可以，但是不适用于在生产上。<br>实际生产中爬虫都是高频次的爬取，所以任何的访问都必须带上代理才行。<br>结合公司目前采用的是httpClient框架，于是给出如下demo代码。 </p>
-<ol start="2">
-<li>含有代理的httpClient实现：</li>
-</ol>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> List<span class="token operator">&lt;</span>URI<span class="token operator">></span> <span class="token function">doGetRedirectLocations</span><span class="token punctuation">(</span>HttpGet httpReq<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token function">setHeaders</span><span class="token punctuation">(</span>httpReq<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        httpReq<span class="token punctuation">.</span><span class="token function">setConfig</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>reqConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        HttpClientContext localContext <span class="token operator">=</span> <span class="token function">getProxyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>springboot项目默认启动的是application.properties文件。在实际的开发中，一个项目中会含有多个模块，每个模块下面可能都含有一个或多个默认的配置信息。另外，有的工程中可能会需要引入额外的自定义配置文件。由此，引出三个问题：</p>
+<p><strong>1. 自定义配置文件如何书写？</strong><br><strong>2. 默认的配置文件启动的顺序与读取？</strong><br><strong>3. 自定义配置文件与默认配置文件发生冲突的时候谁的优先级更高？</strong></p>
+<p>下面我们将仔细的分析三个问题的实现与原理</p>
+<h2 id="一、自定义配置文件"><a href="#一、自定义配置文件" class="headerlink" title="一、自定义配置文件"></a>一、自定义配置文件</h2><h3 id="1-1自定义配置文件书写"><a href="#1-1自定义配置文件书写" class="headerlink" title="1.1自定义配置文件书写"></a>1.1自定义配置文件书写</h3><p>先上例子，整个项目的架构是parent下面多个模块，每个模块里面可能会有一些自定的参数，又不想集中全部写在application.properties中，这样会默认配置会显得繁琐，难以查找与修改。所以我们在不同的架构下会创建一个自定义的配置文件，名为fantuan.properties。<br><img src="https://upload-images.jianshu.io/upload_images/14043408-13d2835e1a38846d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图1. 项目结构图"><br><a id="more"></a><br>对于这种额外自定义的配置，肯定要求多个模块下面都要生效。于是，源码要采用classpath*模式，具体代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FantuanPropertiesConfig</span> <span class="token punctuation">{</span>
 
-        <span class="token keyword">try</span> <span class="token punctuation">(</span>CloseableHttpResponse httpResp <span class="token operator">=</span> instance<span class="token punctuation">.</span>httpClient<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>httpReq<span class="token punctuation">,</span> localContext<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">return</span> localContext<span class="token punctuation">.</span><span class="token function">getRedirectLocations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> PropertySourcesPlaceholderConfigurer <span class="token function">propertySourcesPlaceholderConfigurer</span><span class="token punctuation">(</span>
+            ApplicationContext applicationContext<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+        Resource<span class="token punctuation">[</span><span class="token punctuation">]</span> resources <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token string">"classpath*:fantuan.properties"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        PropertyPlaceholder placeholder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PropertyPlaceholder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ArrayUtils<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span>resources<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        placeholder<span class="token punctuation">.</span><span class="token function">setResources</span><span class="token punctuation">(</span>resources<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> placeholder<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PropertyPlaceholder</span> <span class="token keyword">extends</span> <span class="token class-name">PropertySourcesPlaceholderConfigurer</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Setter</span>
+    <span class="token keyword">private</span> Resource<span class="token punctuation">[</span><span class="token punctuation">]</span> resources<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">loadProperties</span><span class="token punctuation">(</span>Properties props<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">loadProperties</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>Resource resource <span class="token operator">:</span> resources<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            PropertiesLoaderUtils<span class="token punctuation">.</span><span class="token function">fillProperties</span><span class="token punctuation">(</span>props<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">EncodedResource</span><span class="token punctuation">(</span>resource<span class="token punctuation">,</span> <span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-
-
-<span class="token keyword">public</span> <span class="token keyword">static</span> HttpClientContext <span class="token function">getProxyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        AuthCache authCache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BasicAuthCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        authCache<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>proxy<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">BasicScheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        HttpClientContext localContext <span class="token operator">=</span> HttpClientContext<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        localContext<span class="token punctuation">.</span><span class="token function">setAuthCache</span><span class="token punctuation">(</span>authCache<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> localContext<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<p>更进一步地，由于大型网站都会有防爬虫的机制，即便你采用了动态IP的代理，但是还是难免在抓取的过程中可能会弹出需要输入验证码，或者进行滑块滑动验证的时候。<br>于是，更进一步的代码如下。</p>
-<ol start="3">
-<li>增加轮询的视频抓取：</li>
-</ol>
-<pre class=" language-java"><code class="language-java">   <span class="token keyword">public</span> <span class="token keyword">static</span> List<span class="token operator">&lt;</span>URI<span class="token operator">></span> <span class="token function">doGetRedirectLocations</span><span class="token punctuation">(</span>HttpGet httpReq<span class="token punctuation">,</span> <span class="token keyword">int</span> retry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>retry <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"重试次数已经用完"</span> <span class="token operator">+</span> httpReq<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        HttpClientContext localContext <span class="token operator">=</span> <span class="token function">getProxyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token punctuation">(</span>CloseableHttpResponse httpResp <span class="token operator">=</span> instance<span class="token punctuation">.</span>httpClient<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>httpReq<span class="token punctuation">,</span> localContext<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            List<span class="token operator">&lt;</span>URI<span class="token operator">></span> redirectLocations <span class="token operator">=</span> localContext<span class="token punctuation">.</span><span class="token function">getRedirectLocations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>redirectLocations <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> redirectLocations<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> redirectLocations<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">return</span> <span class="token function">doGetRedirectLocations</span><span class="token punctuation">(</span>httpReq<span class="token punctuation">,</span> retry <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>让我们进一步来看一下springboot中的getResources()源码：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//在spring-core-5.0.8的jar包下面的org.springframework.core.io.support 的 PathMatchingResourcePatternResolver 类</span>
+<span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Resource<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getResources</span><span class="token punctuation">(</span>String locationPattern<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+        Assert<span class="token punctuation">.</span><span class="token function">notNull</span><span class="token punctuation">(</span>locationPattern<span class="token punctuation">,</span> <span class="token string">"Location pattern must not be null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>locationPattern<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span>CLASSPATH_ALL_URL_PREFIX<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// a class path resource (multiple resources for same name possible)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">getPathMatcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isPattern</span><span class="token punctuation">(</span>locationPattern<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>CLASSPATH_ALL_URL_PREFIX<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// a class path resource pattern</span>
+                <span class="token keyword">return</span> <span class="token function">findPathMatchingResources</span><span class="token punctuation">(</span>locationPattern<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// all class path resources with the given name</span>
+                <span class="token keyword">return</span> <span class="token function">findAllClassPathResources</span><span class="token punctuation">(</span>locationPattern<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>CLASSPATH_ALL_URL_PREFIX<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// Generally only look for a pattern after a prefix here,</span>
+            <span class="token comment" spellcheck="true">// and on Tomcat only after the "*/" separator for its "war:" protocol.</span>
+            <span class="token keyword">int</span> prefixEnd <span class="token operator">=</span> <span class="token punctuation">(</span>locationPattern<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"war:"</span><span class="token punctuation">)</span> <span class="token operator">?</span> locationPattern<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"*/"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">:</span>
+                    locationPattern<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">':'</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">getPathMatcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isPattern</span><span class="token punctuation">(</span>locationPattern<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>prefixEnd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// a file pattern</span>
+                <span class="token keyword">return</span> <span class="token function">findPathMatchingResources</span><span class="token punctuation">(</span>locationPattern<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// a single resource with the given name</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Resource</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span><span class="token function">getResourceLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span>locationPattern<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<p>PS: 轮询有多重实现方式，初级工程师基本会使用for循环，那样的代码有时候冗余，可读性差。轮询最好用递归的方式，显得优雅。</p>
-<p>至此，关于视频重定向的问题就这么解决了。最后顺口提及一句，在做爬虫解析过程中，我们发现了很多时候URL的尾部是非常不重要的。比如，本文章中的秒拍地址：</p>
-<blockquote>
-<p><a href="http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm" target="_blank" rel="noopener">http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.htm</a></p>
-</blockquote>
-<p>你就算是写成</p>
-<blockquote>
-<p><a href="http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.html" target="_blank" rel="noopener">http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__.html</a></p>
-</blockquote>
-<p>或者</p>
-<blockquote>
-<p><a href="http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__" target="_blank" rel="noopener">http://www.miaopai.com/show/5bpIqSpDFRAvlgidhXSTKZkfSwWYpwaV5SI1ZA__</a></p>
-</blockquote>
-<p>一样可以无差别访问，因此在做正则匹配的时候，切记考虑通配尾部。</p>
+<p>其中CLASSPATH_ALL_URL_PREFIX为：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ResourcePatternResolver</span> <span class="token keyword">extends</span> <span class="token class-name">ResourceLoader</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Pseudo URL prefix for all matching resources from the class path: "classpath*:"
+     * This differs from ResourceLoader's classpath URL prefix in that it
+     * retrieves all matching resources for a given name (e.g. "/beans.xml"),
+     * for example in the root of all deployed JAR files.
+     * @see org.springframework.core.io.ResourceLoader#CLASSPATH_URL_PREFIX
+     */</span>
+    String CLASSPATH_ALL_URL_PREFIX <span class="token operator">=</span> <span class="token string">"classpath*:"</span><span class="token punctuation">;</span>
+
+···
+<span class="token punctuation">}</span>
+</code></pre>
+<p>由此可见，只要是classpath*这样子的写法，就会是多匹配模式，即便是同名的也会多包含模式。</p>
 
       
     </div>
@@ -510,7 +498,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
+            <a href="/tags/springboot/" rel="tag"># springboot</a>
           
         </div>
       
@@ -538,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/14/linux上发送邮件/" rel="next" title=""linux上发送邮件"">
-                <i class="fa fa-chevron-left"></i> "linux上发送邮件"
+              <a href="/2018/10/20/爬虫抓取重定向问题/" rel="next" title=""爬虫抓取重定向问题"">
+                <i class="fa fa-chevron-left"></i> "爬虫抓取重定向问题"
               </a>
             
           </div>
@@ -548,8 +536,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/20/自定义配置文件properties与Spring boot源码启动配置文件分析（一）/" rel="prev" title=""自定义配置文件properties与Spring boot源码启动配置文件分析（一）"">
-                "自定义配置文件properties与Spring boot源码启动配置文件分析（一）" <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/21/自定义配置文件properties与Spring boot源码启动配置文件分析（二）/" rel="prev" title=""自定义配置文件properties与Spring boot源码启动配置文件分析（二）"">
+                "自定义配置文件properties与Spring boot源码启动配置文件分析（二）" <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -714,7 +702,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。"><span class="nav-number">1.</span> <span class="nav-text">所以如果我们直接请求原地址，并且用页面解析方法（如jsoup等），就无法获取到相应的视频标题，视频源码地址等信息。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、自定义配置文件"><span class="nav-number">1.1.</span> <span class="nav-text">一、自定义配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1自定义配置文件书写"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1自定义配置文件书写</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -298,6 +298,512 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/21/自定义配置文件properties与Spring boot源码启动配置文件分析（三）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yukun Wen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hey, you find me!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/21/自定义配置文件properties与Spring boot源码启动配置文件分析（三）/" itemprop="url">"自定义配置文件properties与Spring boot源码启动配置文件分析（三）"</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-21T22:32:29+08:00">
+                2018-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/21/自定义配置文件properties与Spring boot源码启动配置文件分析（三）/" class="leancloud_visitors" data-flag-title=""自定义配置文件properties与Spring boot源码启动配置文件分析（三）"">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在一二中我们分别分析了自定义的配置文件和springboot配置文件如何启动的。接下来我们就对文件启动的顺序进行一个探究。</p>
+<h2 id="三、配置文件优先级读取分析"><a href="#三、配置文件优先级读取分析" class="headerlink" title="三、配置文件优先级读取分析"></a>三、配置文件优先级读取分析</h2><h3 id="1-同为默认配置文件，读取顺序"><a href="#1-同为默认配置文件，读取顺序" class="headerlink" title="1.同为默认配置文件，读取顺序"></a>1.同为默认配置文件，读取顺序</h3><p>在二中我们还记得，其中的变量为：</p>
+<blockquote>
+<p> private static final String DEFAULT_SEARCH_LOCATIONS = “classpath:/,classpath:/config/,file:./,file:./config/“;  </p>
+</blockquote>
+<p>但是，代码中做了一个reverse的操作，即顺序应该是</p>
+<blockquote>
+<p>./config/application.properties,<br>./application.properties,<br>classpath:./config/application.properties,<br>classpath:./application.properties</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/21/自定义配置文件properties与Spring boot源码启动配置文件分析（三）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/21/自定义配置文件properties与Spring boot源码启动配置文件分析（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yukun Wen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hey, you find me!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/21/自定义配置文件properties与Spring boot源码启动配置文件分析（二）/" itemprop="url">"自定义配置文件properties与Spring boot源码启动配置文件分析（二）"</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-21T22:22:29+08:00">
+                2018-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/21/自定义配置文件properties与Spring boot源码启动配置文件分析（二）/" class="leancloud_visitors" data-flag-title=""自定义配置文件properties与Spring boot源码启动配置文件分析（二）"">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><a href="https://www.jianshu.com/p/b325f9ba75bd" target="_blank" rel="noopener">上一篇文章</a>说完了自定义配置文件properties的写法，并且介绍了采用classpath*通配模式下读取多个同名文件的内容方法。<br>下面就要进入到对springboot的默认配置文件application.properties的分析了。</p>
+<h2 id="二、springboot读取默认配置文件深入探究"><a href="#二、springboot读取默认配置文件深入探究" class="headerlink" title="二、springboot读取默认配置文件深入探究"></a>二、springboot读取默认配置文件深入探究</h2><h3 id="1-springboot启动用运行"><a href="#1-springboot启动用运行" class="headerlink" title="1.springboot启动用运行"></a>1.springboot启动用运行</h3><p>通过run里面跟踪下去，会执行到ConfigurableApplicationContext run(String… args)里面，在里面初始化sprignboot的上下文配置。它的listern（ConfigFileApplicationListener）会对它的执行进行监听。<br>ConfigFileApplicationListener里面存在一些static变量，我们先来看一下他们,后面都会用到。<br>注意下面的 DEFAULT_SEARCH_LOCATIONS ，都是采用classpath:的模式，并没有带*</p>
+<pre><code class="java">public class ConfigFileApplicationListener
+        implements EnvironmentPostProcessor, SmartApplicationListener, Ordered {
+
+    private static final String DEFAULT_PROPERTIES = &quot;defaultProperties&quot;;
+
+    // Note the order is from least to most specific (last one wins)
+    private static final String DEFAULT_SEARCH_LOCATIONS = &quot;classpath:/,classpath:/config/,file:./,file:./config/&quot;;
+
+    private static final String DEFAULT_NAMES = &quot;application&quot;;
+
+...
+    /**
+     * The &quot;config location&quot; property name.
+     */
+    public static final String CONFIG_LOCATION_PROPERTY = &quot;spring.config.location&quot;;
+
+    /**
+     * The &quot;config additional location&quot; property name.
+     */
+    public static final String CONFIG_ADDITIONAL_LOCATION_PROPERTY = &quot;spring.config.additional-location&quot;;
+...
+}
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/21/自定义配置文件properties与Spring boot源码启动配置文件分析（二）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/自定义配置文件properties与Spring boot源码启动配置文件分析（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yukun Wen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hey, you find me!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/20/自定义配置文件properties与Spring boot源码启动配置文件分析（一）/" itemprop="url">"自定义配置文件properties与Spring boot源码启动配置文件分析（一）"</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T21:57:29+08:00">
+                2018-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/20/自定义配置文件properties与Spring boot源码启动配置文件分析（一）/" class="leancloud_visitors" data-flag-title=""自定义配置文件properties与Spring boot源码启动配置文件分析（一）"">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>springboot项目默认启动的是application.properties文件。在实际的开发中，一个项目中会含有多个模块，每个模块下面可能都含有一个或多个默认的配置信息。另外，有的工程中可能会需要引入额外的自定义配置文件。由此，引出三个问题：</p>
+<p><strong>1. 自定义配置文件如何书写？</strong><br><strong>2. 默认的配置文件启动的顺序与读取？</strong><br><strong>3. 自定义配置文件与默认配置文件发生冲突的时候谁的优先级更高？</strong></p>
+<p>下面我们将仔细的分析三个问题的实现与原理</p>
+<h2 id="一、自定义配置文件"><a href="#一、自定义配置文件" class="headerlink" title="一、自定义配置文件"></a>一、自定义配置文件</h2><h3 id="1-1自定义配置文件书写"><a href="#1-1自定义配置文件书写" class="headerlink" title="1.1自定义配置文件书写"></a>1.1自定义配置文件书写</h3><p>先上例子，整个项目的架构是parent下面多个模块，每个模块里面可能会有一些自定的参数，又不想集中全部写在application.properties中，这样会默认配置会显得繁琐，难以查找与修改。所以我们在不同的架构下会创建一个自定义的配置文件，名为fantuan.properties。<br><img src="https://upload-images.jianshu.io/upload_images/14043408-13d2835e1a38846d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图1. 项目结构图"><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/20/自定义配置文件properties与Spring boot源码启动配置文件分析（一）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/爬虫抓取重定向问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -678,7 +1184,7 @@ set smtp-auth=login
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -700,7 +1206,7 @@ set smtp-auth=login
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
