@@ -750,7 +750,7 @@
           <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>springboot项目默认启动的是application.properties文件。在实际的开发中，一个项目中会含有多个模块，每个模块下面可能都含有一个或多个默认的配置信息。另外，有的工程中可能会需要引入额外的自定义配置文件。由此，引出三个问题：</p>
 <p><strong>1. 自定义配置文件如何书写？</strong><br><strong>2. 默认的配置文件启动的顺序与读取？</strong><br><strong>3. 自定义配置文件与默认配置文件发生冲突的时候谁的优先级更高？</strong></p>
 <p>下面我们将仔细的分析三个问题的实现与原理</p>
-<h2 id="一、自定义配置文件"><a href="#一、自定义配置文件" class="headerlink" title="一、自定义配置文件"></a>一、自定义配置文件</h2><h3 id="1-1自定义配置文件书写"><a href="#1-1自定义配置文件书写" class="headerlink" title="1.1自定义配置文件书写"></a>1.1自定义配置文件书写</h3><p>先上例子，整个项目的架构是parent下面多个模块，每个模块里面可能会有一些自定的参数，又不想集中全部写在application.properties中，这样会默认配置会显得繁琐，难以查找与修改。所以我们在不同的架构下会创建一个自定义的配置文件，名为fantuan.properties。<br><img src="https://upload-images.jianshu.io/upload_images/14043408-13d2835e1a38846d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图1. 项目结构图"><br>
+<h2 id="一、自定义配置文件"><a href="#一、自定义配置文件" class="headerlink" title="一、自定义配置文件"></a>一、自定义配置文件</h2><h3 id="1-1自定义配置文件书写"><a href="#1-1自定义配置文件书写" class="headerlink" title="1.1自定义配置文件书写"></a>1.1自定义配置文件书写</h3><p>先上例子，整个项目的架构是parent下面多个模块，每个模块里面可能会有一些自定的参数，又不想集中全部写在application.properties中，这样会默认配置会显得繁琐，难以查找与修改。所以我们在不同的架构下会创建一个自定义的配置文件，名为fantuan.properties。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/10/20/自定义配置文件properties与Spring boot源码启动配置文件分析（一）/#more" rel="contents">
