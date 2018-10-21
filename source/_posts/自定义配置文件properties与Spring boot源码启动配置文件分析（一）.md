@@ -15,8 +15,8 @@ springboot项目默认启动的是application.properties文件。在实际的开
 ## 一、自定义配置文件
 ### 1.1自定义配置文件书写
 先上例子，整个项目的架构是parent下面多个模块，每个模块里面可能会有一些自定的参数，又不想集中全部写在application.properties中，这样会默认配置会显得繁琐，难以查找与修改。所以我们在不同的架构下会创建一个自定义的配置文件，名为fantuan.properties。
-![图1. 项目结构图](https://upload-images.jianshu.io/upload_images/14043408-13d2835e1a38846d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 <!--more-->
+![图1. 项目结构图](https://upload-images.jianshu.io/upload_images/14043408-13d2835e1a38846d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 对于这种额外自定义的配置，肯定要求多个模块下面都要生效。于是，源码要采用classpath*模式，具体代码如下：
 ```java
 @Configuration
